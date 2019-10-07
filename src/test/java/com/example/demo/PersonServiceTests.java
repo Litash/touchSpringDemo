@@ -54,7 +54,7 @@ public class PersonServiceTests {
     }
 
     @Test
-    public void whenValidName_thenEmployeeShouldBeFound() {
+    public void whenValidName_thenPersonShouldBeFound() {
 
         Optional<Person> found = personService.getPersonById(targetId);
 
