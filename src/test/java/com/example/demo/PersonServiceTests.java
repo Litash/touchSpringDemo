@@ -51,15 +51,26 @@ public class PersonServiceTests {
 
         Mockito.when(fakeDaoMock.selectPersonById(targetId))
                 .thenReturn(java.util.Optional.of(alex));
+
+        Mockito.when(fakeDaoMock.deletePersonById(targetId))
+                .thenReturn(1);
     }
 
     @Test
-    public void whenValidName_thenPersonShouldBeFound() {
+    public void whenValidId_thenPersonShouldBeFound() {
 
         Optional<Person> found = personService.getPersonById(targetId);
 
         assertThat(found.isPresent());
 
         assertThat(found.get().getName()).isEqualTo("ash");
+    }
+
+    @Test
+    public void deleteByIdSuccess() {
+
+        int deleteResult = personService.deletePersonById(targetId);
+
+        assertThat(deleteResult).isEqualTo(1);
     }
 }
